@@ -1,7 +1,9 @@
 %div.container
   %div.row
     %div.img.col-md-6
-      %img.img-responsive.img-rounded{src: "//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120", alt: "Responsive image"}
+      -# %img.img-responsive.img-rounded{src: "//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120", alt: "Responsive image"}
+      .img
+      = image_tag "tatsuki.jpg", :class => "img responsive img-rounded"
 
 .CUelements
   %p= "User ID : #{current_user.id}"
@@ -29,6 +31,12 @@
       %input.btn.btn-primary{:type => "submit", :value => "Upload"}
 
 :css
+  .img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+  }
   .CUelements{
     padding:5%;
     text-align:center;

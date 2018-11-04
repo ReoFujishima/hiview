@@ -13,4 +13,10 @@ class UsersController < ApplicationController
   def showStatus
     @st = Status.order("created_at desc").find_by(:user_id => current_user.id)
   end
+
+  private
+ 
+    def after_sign_in_path_for(resource)
+       "/profile"
+    end
 end
