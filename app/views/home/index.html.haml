@@ -1,0 +1,21 @@
+%p Home/index
+
+-if current_user
+  = current_user.id
+  user
+
+-if current_hospital
+  = current_hospital.id
+  hospital
+
+= link_to 'Logout User', destroy_user_session_url, method: :delete
+= link_to 'Logout Hospital', destroy_hospital_session_url, method: :delete
+%p **************************
+= link_to 'Sign Up User', new_user_registration_url
+= link_to 'Sign Up Hospital', new_hospital_registration_url
+%p **************************
+= link_to 'Sign In User', new_user_session_url
+= link_to 'Sign In Hospital', new_hospital_session_url
+%p **************************
+= link_to 'User profile', '/users/#{current_user.id}'
+%p **************************

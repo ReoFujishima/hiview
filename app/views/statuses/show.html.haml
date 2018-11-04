@@ -1,0 +1,16 @@
+%p#notice= notice
+
+%p
+  %b Status:
+  = @status.value
+%p
+  %b Hospital:
+  = @status.hospital_id
+%p
+  %b User:
+  = @status.user_id
+
+
+/ = link_to 'Edit', edit_status_path(@status)
+/ \|
+/ = link_to 'Back', statuses_path
