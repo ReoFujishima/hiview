@@ -1,9 +1,20 @@
-%h status
 
-%p= @st.value
+.statusWrap
+  -if Time.now.strftime("%Y-%m-%d").to_i.days - @st.created_at.strftime("%Y-%m-%d").to_i.days < 90
+    .pnContainer
+      -if @st.value == "positive"
+        = image_tag 'positve.png', :class => "imgOfSt"
 
--if @st.value == "positive"
-  = image_tag 'positve.png'
+      -if @st.value == "negative"
+        = image_tag 'negative.png', :class => "imgOfSt"
 
--if @st.value == "negative"
-  = image_tag 'negative.png'
+    .countDown
+      %p.label-for-time Date of your last test
+      %p.time= "#{@st.created_at.strftime("%m/%d/%Y")}"
+      %p.label-for-time Days you have left
+      %p.time= "#{90 - (Time.now.strftime("%Y-%m-%d").to_i.days - @st.created_at.strftime("%Y-%m-%d").to_i.days)} days"
+  -else
+    = image_tag 'Expired.jpg', :class => "imgOfSt"
+    .messageContainer
+      %h1= "Date of your last test : #{Time.now.strftime("%m/%d/%Y")}"
+      %p To keep proving yourself not to have HIV, you need to check it at the proper facility every 3 months.

@@ -1,3 +1,28 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.statusWrap{
+  margin: auto;
+  max-width: 780px;
+}
+.pnContainer{
+  text-align: center;
+
+}
+.imgOfSt{
+  width: 90%;
+  height: auto;
+}
+.messageContainer{
+  text-align: center;
+}
+.countDown{
+  text-align: center;
+  .label-for-time{
+    font-size: 25px;
+  }
+  .time{
+    font-size: 30px;
+  }
+}
