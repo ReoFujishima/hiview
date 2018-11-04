@@ -6,18 +6,15 @@
         - @status.errors.full_messages.each do |message|
           %li= message
 
-  .field
+  .form-group
     = f.label :value, 'Positive or negative?'
-    = f.text_field :value
-  .field
+    = f.text_field :value, class: 'form-control'
+  .form-group
     = f.label :hospital_id
-    = f.text_area :hospital_id
-  .field
+    = f.text_area :hospital_id, class: 'form-control'
+  .form-group
     = f.label :user_id, 'User_id'
-    = f.text_area :user_id
+    = f.text_area :user_id, class: 'form-control'
 
-  .actions
-    = f.submit 'Save'
-
--if @status
-  %p= @status.hospital_id
+  .form-group
+    = f.submit 'Save', class: 'btn btn-primary'

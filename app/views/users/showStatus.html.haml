@@ -1,12 +1,14 @@
 
 .statusWrap
-  -if Time.now.strftime("%Y-%m-%d").to_i.days - @st.created_at.strftime("%Y-%m-%d").to_i.days < 90
+  -if Time.now.strftime("%Y-%m-%d").to_i.days - @st.created_at.strftime("%Y-%m-%d").to_i.days < 0
     .pnContainer
       -if @st.value == "positive"
-        = image_tag 'positve.png', :class => "imgOfSt"
+        .text-center
+          = image_tag 'positve.png', :class => "rounded"
 
       -if @st.value == "negative"
-        = image_tag 'negative.png', :class => "imgOfSt"
+        .text-center
+          = image_tag 'negative.png', :class => "rounded"
 
     .countDown
       %p.label-for-time Date of your last test
@@ -14,7 +16,24 @@
       %p.label-for-time Days you have left
       %p.time= "#{90 - (Time.now.strftime("%Y-%m-%d").to_i.days - @st.created_at.strftime("%Y-%m-%d").to_i.days)} days"
   -else
-    = image_tag 'Expired.jpg', :class => "imgOfSt"
-    .messageContainer
-      %h1= "Date of your last test : #{Time.now.strftime("%m/%d/%Y")}"
-      %p To keep proving yourself not to have HIV, you need to check it at the proper facility every 3 months.
+    .pnContainer
+      = image_tag 'Expired.jpg', :class => "imgOfSt"
+      .countDown
+        %p.label-for-time Date of your last test
+        %p.time= "#{Time.now.strftime("%m/%d/%Y")}"
+        %p.label-for-time To keep proving yourself not to have HIV, you need to check it at the proper facility every 3 months.
+
+:css
+  img{
+    max-width: 100%;
+  }
+  .countDown{
+    margin-top: 10px;
+  }
+  .label-for-time{
+    text-align: center;
+  }
+  .time{
+    text-align: center;
+    font-size: xx-large;
+  }

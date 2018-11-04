@@ -10,7 +10,9 @@
 }
 .pnContainer{
   text-align: center;
-
+  img{
+    max-width: 100%;
+  }
 }
 .imgOfSt{
   width: 90%;
@@ -28,3 +30,4 @@
     font-size: 30px;
   }
 }
+
