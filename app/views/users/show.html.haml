@@ -20,10 +20,15 @@
   .img{
     text-align:center;
   }
-  img{
-    border-radius: 40px;
-  }
+%div.container
+  %form{:action => "/profile/upload", :enctype => "multipart/form-data", :method => "get"}
+    %div.form-group
+      %label Upload Certificate
+      %input.form-control-file{:name => "file", :type => "file"}
+      %br
+      %input.btn.btn-primary{:type => "submit", :value => "Upload"}
 
+:css
   .CUelements{
     padding:5%;
     text-align:center;

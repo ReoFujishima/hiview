@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
+    
+  end
 
+  def upload
+    st = Status.new(value: "negative", user_id: current_user.id, hospital_id: "1", created_at: "2018-11-01")
+    st.save
   end
 
   def showStatus

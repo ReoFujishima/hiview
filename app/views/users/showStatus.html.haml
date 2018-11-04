@@ -1,30 +1,34 @@
-
 .statusWrap
-  -if Time.now.strftime("%Y-%m-%d").to_i.days - @st.created_at.strftime("%Y-%m-%d").to_i.days < 0
-    .pnContainer
-      -if @st.value == "positive"
-        .text-center
-          = image_tag 'positve.png', :class => "rounded"
+  -if !@st.blank?
+    -if Time.now.strftime("%Y-%m-%d").to_i.days - @st.created_at.strftime("%Y-%m-%d").to_i.days < 90
+      .pnContainer
+        -if @st.value == "positive"
+          .text-center
+            = image_tag 'positve.png', :class => "rounded"
 
-      -if @st.value == "negative"
-        .text-center
-          = image_tag 'negative.png', :class => "rounded"
+        -if @st.value == "negative"
+          .text-center
+            = image_tag 'negative.png', :class => "rounded"
 
-    .countDown
-      %p.label-for-time Date of your last test
-      %p.time= "#{@st.created_at.strftime("%m/%d/%Y")}"
-      %p.label-for-time Days you have left
-      %p.time= "#{90 - (Time.now.strftime("%Y-%m-%d").to_i.days - @st.created_at.strftime("%Y-%m-%d").to_i.days)} days"
-  -else
-    .pnContainer
-      = image_tag 'Expired.jpg', :class => "imgOfSt"
       .countDown
         %p.label-for-time Date of your last test
-        %p.time= "#{Time.now.strftime("%m/%d/%Y")}"
+        %p.time= "#{@st.created_at.strftime("%m/%d/%Y")}"
+        %p.label-for-time Days you have left
+        %p.time= "#{90 - (Time.now.strftime("%Y-%m-%d").to_i.days - @st.created_at.strftime("%Y-%m-%d").to_i.days)} days"
+  -else
+    .pnContainer.center
+      %div.container
+        = image_tag 'Expired.jpg', :class => "imgOfSt center"
+      .countDown
+        %p.label-for-time Date of your last test
+        -if @st.blank?
+          %p.not_yet= "you have not taken a test yet"
+        -else
+          %p.time= "#{@st.created_at.strftime("%m/%d/%Y")}"
         %p.label-for-time To keep proving yourself not to have HIV, you need to check it at the proper facility every 3 months.
 
 :css
-  img{
+  .img{
     max-width: 100%;
   }
   .countDown{
@@ -36,4 +40,14 @@
   .time{
     text-align: center;
     font-size: xx-large;
+  }
+  .not_yet{
+    text-align: center;
+    font-size: x-large;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
   }
