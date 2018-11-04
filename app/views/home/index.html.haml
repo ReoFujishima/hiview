@@ -1,15 +1,26 @@
 .homeWrap
-
   = image_tag 'hiview.png', :class => "gem"
 
-  %span.gam For Users
+  -if user_signed_in? || hospital_signed_in?
+    %span.gam For Users
+    = link_to 'User Profile', profile_url, class: "gam"
 
-  = link_to 'Sign Up', new_user_registration_url, class: "gam"
+    = link_to 'Logout User', destroy_user_session_url, method: :delete, class: "gam"
 
-  = link_to 'Sign In', new_user_session_url, class: "gam"
+    %span.gam For Hospitals
+    = link_to 'Go create a new status', new_status_url, class: "gam"
 
-  %span.gam For Hospitals
-  = link_to 'Sign In', new_hospital_session_url, class: "gam"
+    = link_to 'Logout Hospital', destroy_hospital_session_url, method: :delete, class: "gam"
+
+  -else
+    %span.gam For Users
+
+    = link_to 'Sign Up', new_user_registration_url, class: "gam"
+
+    = link_to 'Sign In', new_user_session_url, class: "gam"
+
+    %span.gam For Hospitals
+    = link_to 'Sign In', new_hospital_session_url, class: "gam"
 
 :css
   .homeWrap{
