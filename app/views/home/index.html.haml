@@ -1,24 +1,55 @@
-%p Home/index
+.homeWrap
+  = image_tag 'hiview.png', :class => "gem"
 
--if current_user
-  = current_user.id
-  user
+  -if user_signed_in? || hospital_signed_in?
+    %span.gam For Users
+    = link_to 'User Profile', profile_url, class: "gam"
 
--if current_hospital
-  = current_hospital.id
-  hospital
+    = link_to 'Logout User', destroy_user_session_url, method: :delete, class: "gam"
 
-= link_to 'Logout User', destroy_user_session_url, method: :delete
-= link_to 'Logout Hospital', destroy_hospital_session_url, method: :delete
-%p **************************
-= link_to 'Sign Up User', new_user_registration_url
-= link_to 'Sign Up Hospital', new_hospital_registration_url
-%p **************************
-= link_to 'Sign In User', new_user_session_url
-= link_to 'Sign In Hospital', new_hospital_session_url
-%p **************************
-= link_to 'User profile', '/users/#{current_user.id}'
-%p **************************
-= link_to 'Edit user', edit_user_registration_url
-%p **********************
-= link_to 'User Profile', profile_url
+    %span.gam For Hospitals
+    = link_to 'Go create a new status', new_status_url, class: "gam"
+
+    = link_to 'Logout Hospital', destroy_hospital_session_url, method: :delete, class: "gam"
+
+  -else
+    %span.gam For Users
+
+    = link_to 'Sign Up', new_user_registration_url, class: "gam"
+
+    = link_to 'Sign In', new_user_session_url, class: "gam"
+
+    %span.gam For Hospitals
+    = link_to 'Sign In', new_hospital_session_url, class: "gam"
+
+:css
+  .homeWrap{
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+  }
+  .gam{
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  img{
+    margin: auto;
+    hight: 350px;
+    width: 350px;
+  }
+
+  h1{
+    color: lightgreen;
+    font-family: fantasy;
+    font-size: 20vw;
+  }
+
+  span{
+    font-size: 7vw;
+    color: darkgreen;
+  }
+
+  a{
+    font-size: 5vw;
+  }
