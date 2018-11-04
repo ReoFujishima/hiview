@@ -1,3 +1,9 @@
 %h status
 
 %p= @st.value
+
+-if @st.value == "positive"
+  = image_tag 'positve.png'
+
+-if @st.value == "negative"
+  = image_tag 'negative.png'
