@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   root to: "home#index"
   get "/profile/upload", to: 'users#upload'
   get "/profile", to: 'users#show'
+  get "/info", to: 'home#info'
 end
