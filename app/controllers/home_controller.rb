@@ -6,4 +6,7 @@ class HomeController < ApplicationController
     #   redirect_to "/statuses/new" and return 
     # end
   end
+
+  def info
+  end
 end

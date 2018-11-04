@@ -10,7 +10,6 @@ class StatusesController < InheritedResources::Base
     # @status = params[:status]
     # @status = Status.new(params[:status])
     # create!(:notice => "New Status was created") { root_url }
-    @hospital_id = current_hospital.id
     create!(:notice => "New Status was created")
   end
 

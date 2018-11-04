@@ -11,7 +11,7 @@
     = f.text_field :value, class: 'form-control'
   .form-group
     = f.label :hospital_id
-    = f.text_area :hospital_id, class: 'form-control'
+    = f.text_area :hospital_id, value: "1", class: 'form-control', readonly: true
   .form-group
     = f.label :user_id, 'User_id'
     = f.text_area :user_id, class: 'form-control'
