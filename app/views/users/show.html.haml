@@ -17,3 +17,11 @@
   / = current_user.status
   = current_user.gender
   / = current_user.status
+
+%div.container
+  %form{:action => "/profile/upload", :enctype => "multipart/form-data", :method => "get"}
+    %div.form-group
+      %label Upload Certificate
+      %input.form-control-file{:name => "file", :type => "file"}
+      %br
+      %input.btn.btn-primary{:type => "submit", :value => "Send"}
