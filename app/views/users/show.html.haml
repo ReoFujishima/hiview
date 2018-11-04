@@ -1,4 +1,16 @@
-%p Users/show
+%h2 Profile
+
+:css
+  .container{
+    padding:5%;
+  }
+  .container .img{
+    text-align:center;
+  }
+%div.container
+  %div.row
+    %div.img.col-md-6
+      %img.img-responsive.img-rounded{src: "//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120", alt: "Responsive image"}
 -if current_user
   = current_user.id
   = current_user.name
