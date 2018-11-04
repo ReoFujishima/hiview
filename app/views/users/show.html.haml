@@ -1,19 +1,35 @@
-%h2 Profile
+%div.container
+  %div.row
+    %div.img.col-md-6
+      %img.img-responsive.img-rounded{src: "//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120", alt: "Responsive image"}
+
+.CUelements
+  %p= "User ID : #{current_user.id}"
+  %p= "Name : #{current_user.name}"
+  / = current_user.status
+  %p= "Gender : #{current_user.gender}"
+
+.linkToST
+  %p= link_to 'Go to see HIV status', profile_status_path
+
 
 :css
   .container{
     padding:5%;
   }
-  .container .img{
+  .img{
     text-align:center;
   }
-%div.container
-  %div.row
-    %div.img.col-md-6
-      %img.img-responsive.img-rounded{src: "//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120", alt: "Responsive image"}
--if current_user
-  = current_user.id
-  = current_user.name
-  / = current_user.status
-  = current_user.gender
-  / = current_user.status
+  img{
+    border-radius: 40px;
+  }
+
+  .CUelements{
+    padding:5%;
+    text-align:center;
+  }
+
+  .linkToST{
+    text-align:center;
+    text-decolation: none;
+  }

@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'devise_bootstrap_views';
-    
+
 .statusWrap{
   margin: auto;
   max-width: 780px;
@@ -25,5 +25,15 @@
   }
   .time{
     font-size: 30px;
+  }
+}
+
+
+
+// ************* profile ************
+.CUelements{
+  padding:5%;
+  text-align:center;
+  p{
   }
 }
