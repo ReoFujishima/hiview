@@ -3,3 +3,27 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'devise_bootstrap_views';
     
+.statusWrap{
+  margin: auto;
+  max-width: 780px;
+}
+.pnContainer{
+  text-align: center;
+
+}
+.imgOfSt{
+  width: 90%;
+  height: auto;
+}
+.messageContainer{
+  text-align: center;
+}
+.countDown{
+  text-align: center;
+  .label-for-time{
+    font-size: 25px;
+  }
+  .time{
+    font-size: 30px;
+  }
+}
