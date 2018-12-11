@@ -1,6 +1,35 @@
 // Place all the styles related to the statuses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.newStatusWrap{
+@import 'colors.scss';
+
+.statusWrap{
   text-align: center;
+  .card{
+    .blank_box{
+      height: 100px;
+      background-color: lighten($thema_color, 37%);
+    }
+    .expired{
+      background-color: darken($attention_color, 20%);
+      .card-title{
+        color: white;
+      }
+      p{
+        color: white;
+      }
+    }
+    .status{
+      background-color: darken($thema_color, 30%);
+      .card-title{
+        color: white;
+      }
+      p{
+        color: white;
+      }
+      .card-current-time{
+        color: yellow;
+      }
+    }
+  }
 }

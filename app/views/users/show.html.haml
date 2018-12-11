@@ -1,48 +1,56 @@
-%div.container
-  %div.row
-    %div.img.col-md-6
-      -# %img.img-responsive.img-rounded{src: "//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120", alt: "Responsive image"}
-      .img
-      = image_tag "tatsuki.jpg", :class => "img responsive img-rounded"
+/ // ~~~~~~~~~~~~~~~~ if current_user is NOT vissiting his own page ~~~~~~~~~~~~~~~~~~~~~~
+/ -if @user
+/   .user_wrap
+/     .card_box
+/       .card
+/         .card_img
+/           = image_tag "tatsuki.jpg", :class => "card-img-top"
 
-.CUelements
-  %p= "User ID : #{current_user.id}"
-  %p= "Name : #{current_user.name}"
-  / = current_user.status
-  %p= "Gender : #{current_user.gender}"
+/         %ul.list-group.list-group-flush
+/           %li.list-group-item User ID : #{current_user.uuid}
+/           %li.list-group-item Name : #{current_user.name}
+/           / = current_user.status
+/           %li.list-group-item Gender : #{current_user.gender}
 
-.linkToST
-  %p= link_to 'Go to see HIV status', profile_status_path
+/         %ul.list-group.list-group-flush
+/           =link_to 'Go to see HIV status', profile_status_path, class: "btn btn_normal btn-lg active"
 
+/   // follow friend btn
+/   / -if user_signed_in?
+/   /   %span.follow-wrapper
+/   /     =render 'follow_form'
 
-:css
-  .container{
-    padding:5%;
-  }
-  .img{
-    text-align:center;
-  }
-%div.container
-  %form{:action => "/profile/upload", :enctype => "multipart/form-data", :method => "get"}
-    %div.form-group
-      %label Upload Test Result
-      %input.form-control-file{:name => "file", :type => "file"}
-      %br
-      %input.btn.btn-primary{:type => "submit", :value => "Upload"}
+/ // ~~~~~~~~~~~~~~~~ if current_user is vissiting his own page ~~~~~~~~~~~~~~~~~~~~~~
+/ -else
+.user_wrap
+  .card_box
+    .card
+      .card_img
+        = image_tag "tatsuki.jpg", :class => "card-img-top"
 
-:css
-  .img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
-  }
-  .CUelements{
-    padding:5%;
-    text-align:center;
-  }
+      %ul.list-group.list-group-flush
+        %li.list-group-item User ID : #{current_user.uuid}
+        %li.list-group-item Name : #{current_user.name}
+        / = current_user.status
+        %li.list-group-item Gender : #{current_user.gender}
 
-  .linkToST{
-    text-align:center;
-    text-decolation: none;
-  }
+      %ul.list-group.list-group-flush
+        =link_to 'Go to see HIV status', profile_status_path, class: "btn btn_normal btn-lg active"
+
+  -if @user
+
+  -else
+    .card_box.upload_file
+      .card{:style => "width: 18rem;"}
+        .card-body
+          %form{:action => "/profile/upload", :enctype => "multipart/form-data", :method => "get"}
+            %div.form-group
+              %label.card-title Upload Test Result
+              %input.form-control-file{:name => "file", :type => "file"}
+              %br
+              %input{:type => "submit", :value => "Upload", class: "btn btn_normal btn-lg active"}
+          / %h5.card-title Card title
+          / %h6.card-subtitle.mb-2.text-muted Card subtitle
+          / %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+          / %a.card-link{:href => "#"} Card link
+          / %a.card-link{:href => "#"} Another link

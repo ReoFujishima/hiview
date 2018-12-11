@@ -1,0 +1,39 @@
+%h1 Listing statuses
+
+%table
+  %thead
+    %tr
+      %th id
+      %th email
+      %th gender
+      %th name
+      %th
+      %th
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.id
+        %td= user.email
+        %td= user.gender
+        %td= user.name
+        %td= link_to 'Show', profile_path(id: user.id)
+        / %td= link_to 'Edit', edit_user_path(status)
+        / %td= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+/ = link_to 'New Status', new_status_path
+
+
+/ #  id                     :integer          not null
+/ #  email                  :string           default(""), not null
+/ #  encrypted_password     :string           default(""), not null
+/ #  reset_password_token   :string
+/ #  reset_password_sent_at :datetime
+/ #  remember_created_at    :datetime
+/ #  created_at             :datetime         not null
+/ #  updated_at             :datetime         not null
+/ #  uuid                   :string           primary key
+/ #  gender                 :string
+/ #  name                   :string

@@ -1,10 +1,6 @@
-%h2 Upload Successful
+.upload_wrap
+  .title
+    %h2 Upload Successful
 
-.linkToST
-  %p= link_to 'Go back to see the latest status', profile_status_path 
-
-:css
-  .linkToST{
-    text-align:center;
-    text-decolation: none;
-  }
+  .linkToST
+    =link_to 'Go back to see the latest status', profile_status_path, class: "btn btn_normal btn-lg active"

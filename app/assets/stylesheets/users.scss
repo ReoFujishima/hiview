@@ -1,32 +1,44 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import 'devise_bootstrap_views';
-@import 'bootstrap';
 
-.statusWrap{
-  margin: auto;
-  max-width: 780px;
-}
-.pnContainer{
-  text-align: center;
-  img{
-    max-width: 100%;
+.user_wrap{
+  .card_box{
+    display: flex;
+    justify-content: center;
+    .card{
+      width: 90%;
+      text-align: center;
+      .card_img{
+        text-align: center;
+        .card-img-top{
+          border-radius: 25px;
+          max-width: 780px;
+        }
+        .card_img_index{
+          max-width: 300px;
+        }
+      }
+      .card-body{
+        .form-control-file{
+          background-color: lighten($thema_color, 37%);
+        }
+      }
+    }
+  }
+  .upload_file{
+    margin-top: 100px;
   }
 }
-.imgOfSt{
-  width: 90%;
-  height: auto;
-}
-.messageContainer{
-  text-align: center;
-}
-.countDown{
-  text-align: center;
-  .label-for-time{
-    font-size: 25px;
-  }
-  .time{
-    font-size: 30px;
+
+// Upload
+.upload_wrap{
+  margin-top: 100px;
+  text-align:center;
+  text-decolation: none;
+  padding: 15px;
+  background-color: white;
+  .linkToST{
+    margin-top: 100px;
   }
 }

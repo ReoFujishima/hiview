@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title HIV3
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+  %body
+    = render "layouts/header"
+    -if notice
+      %p.notice.alert-success= notice
+    -if alert
+      .alert.alert-danger{:role => "alert"}= alert
+    .container_yield
+      = yield
+    / = render "layouts/footer"

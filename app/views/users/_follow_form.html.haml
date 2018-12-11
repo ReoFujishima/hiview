@@ -1,0 +1,11 @@
+- unless current_user.id == @user.id
+  %p renderring
+  - if current_user.following?(@user)
+    / = render 'users/unfollow', user: @user
+    = form_for(current_user.following_relationships.build(following_id: @user.id), remote: true) do |f|
+      %div= f.hidden_field :following_id
+      = f.submit "Follow", class: "btn btn-large btn-primary"
+  - else
+    / = render 'users/follow', user: @user
+    = form_for(current_user.following_relationships.find_by(following_id: @user.id), html: { method: :delete }, remote: true) do |f|
+      = f.submit "Unfollow", class: "btn btn-large"

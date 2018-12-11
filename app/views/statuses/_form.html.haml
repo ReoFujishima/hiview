@@ -7,14 +7,22 @@
           %li= message
 
   .form-group
-    = f.label :value, 'Positive or negative?'
+    = f.label :value, 'positive or negative?'
     = f.text_field :value, class: 'form-control'
-  .form-group
-    = f.label :hospital_id
-    = f.text_area :hospital_id, value: "1", class: 'form-control', readonly: true
-  .form-group
-    = f.label :user_id, 'User_id'
-    = f.text_area :user_id, class: 'form-control'
+
+  / .form-group
+  /   = f.label :value, 'Positive or negative?'
+  /   = f.select_field :value, class: 'form-control'
+  /     %option 'positive'
+  /     %option 'negative'
 
   .form-group
-    = f.submit 'Save', class: 'btn btn-primary'
+    = f.label :hospital_id, 'Hospital ID'
+    = f.text_field :hospital_id, value: "1", class: 'form-control', readonly: true
+
+  .form-group
+    = f.label :user_id, 'User ID'
+    = f.text_field :user_id, class: 'form-control'
+
+  .form-group
+    = f.submit 'Save', class: "btn btn_normal btn-lg active"

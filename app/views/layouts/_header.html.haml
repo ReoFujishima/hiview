@@ -1,0 +1,12 @@
+.header
+  .header_elements_wrap
+    .dropdown
+      %button#dropdownMenu2.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        HIView
+      .dropdown-menu
+        =link_to "home", "/", class: "dropdown-item"
+        =link_to "What is HIV?", "/info", class: "dropdown-item"
+        / %button.dropdown-item{:type => "button"} Something else here
+    .icon
+      %a{:href => "/"}
+        %img{:alt => "アイコン", :border => "0", :height => "50", :src => "/assets/hiview.png", :width => "50"}

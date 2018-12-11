@@ -1,3 +1,133 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'colors.scss';
+
+html {
+  font-size: 100%;
+  min-height: 100%;
+  position: relative;
+  // 600px以降から、100pxごとに1px大きくなる
+  @media (min-width: 600px) {
+    font-size: calc(112.5% + 4 * (100vw - 600px) / 400)
+  }
+
+  // 1,000px以上は、22pxに
+  @media (min-width: 1000px) {
+    font-size: calc(137.5%)
+  }
+}
+h1 { font-size: 2em; }
+
+body{
+  margin-bottom: 5em;
+  background-color: lighten($thema_color, 37%);
+  max-width: 1400px;
+}
+
+.container_yield{
+  padding-bottom: 250px;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
+// Home
+.home_box{
+  .main_icon{
+    text-align: center;
+    img{
+      width: 100%;
+      border-radius: 20%;
+    }
+  }
+  // .title_wrap{
+  //   margin-top: 15px;
+  //   .maim_title{
+  //     text-align: center;
+  //   }
+  //   .sub_title{
+  //     text-align: center;
+  //   }
+  // }
+  .links_wrap{
+    margin-top: 20px;
+    text-align: center;
+    // display: flex;
+    // justify-content: space-around;
+    .links_box{
+      margin-top: 100px;
+    }
+  }
+}
+
+// Header
+.header{
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-bottom: 50px;
+  background-color: darken($thema_color, 26%);
+  .header_elements_wrap{
+    margin-left: 3%;
+    margin-right: 3%;
+    display: flex;
+    justify-content: space-between;
+    .dropdown{
+      border-color: darken($thema_color, 12%);
+    }
+    #dropdownMenu2{
+      background-color: darken($thema_color, 12%);
+    }
+    .icon{
+      img{
+        border-radius: 20%;
+      }
+    }
+  }
+}
+
+// common elements ~~~~~~~~~~~~~
+.centering_box{
+  text-align: center;
+}
+
+.btn{
+  text-decoration: none;
+}
+
+.btn_normal{
+  background-color: darken($thema_color, 14%);
+  color: white;
+  border-bottom: solid 4px darken($thema_color, 30%);
+  border-radius: 3px;
+}
+
+.btn_delete{
+  // background-color: darken($color_attention, 3%);
+  color: white;
+}
+
+.links_box{
+  margin-top: 150px;
+}
+
+// info~~~~~~~~~~~~~
+.info_wrap{
+  margin: 3%;
+  padding: 2%;
+  background-color: white;
+}
+
+// FOrm ~~~~~~~~~~~~~~~~~~~~
+//form
+.form_box{
+  text-align: center;
+  .form-group{
+    margin-top: 15px;
+  }
+  // .btn-primary{
+  //   margin-top: 15px;
+  // }
+  // .acount_delete{
+  //   margin-top: 250px;
+  // }
+}

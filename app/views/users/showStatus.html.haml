@@ -1,53 +1,55 @@
 .statusWrap
   -if !@st.blank?
     -if Time.now.strftime("%Y-%m-%d").to_i.days - @st.created_at.strftime("%Y-%m-%d").to_i.days < 90
-      .pnContainer
+      .card{:style => "width: 100%;"}
         -if @st.value == "positive"
-          .text-center
-            = image_tag 'positve.png', :class => "rounded"
+          %img.card-img-top{:alt => "positive", :src => "/assets/positive.png"}
 
         -if @st.value == "negative"
-          .text-center
-            = image_tag 'negative.png', :class => "rounded"
-
-      .countDown
-        %p.label-for-time Date of your last test
-        %p.time= "#{@st.created_at.strftime("%m/%d/%Y")}"
-        %p.label-for-time Days you have left
-        %p.time= "#{90 - (Time.now.strftime("%Y-%m-%d").to_i.days - @st.created_at.strftime("%Y-%m-%d").to_i.days)} days"
+          %img.card-img-top{:alt => "negative", :src => "/assets/negative.png"}
+        .blank_box
+        .card-body.status
+          %h2.card-title Date of your last test
+          %p.time= "#{@st.created_at.strftime("%m/%d/%Y")}"
+          %h2.card-title Days you have left
+          %p.time= "#{90 - (Time.now.strftime("%Y-%m-%d").to_i.days - @st.created_at.strftime("%Y-%m-%d").to_i.days)} days"
+          %h2.card-current-time The current time
+          %p#time-now
   -else
-    .pnContainer.center
-      %div.container
-        = image_tag 'Expired.jpg', :class => "imgOfSt center"
-      .countDown
-        %p.label-for-time Date of your last test
+    .card{:style => "width: 100%;"}
+      %img.card-img-top{:alt => "Expired", :src => "/assets/Expired.jpg"}/
+      .blank_box
+      .card-body.expired
+        %h2.card-title Date of your last test
         -if @st.blank?
           %p.not_yet= "you have not taken a test yet"
         -else
           %p.time= "#{@st.created_at.strftime("%m/%d/%Y")}"
-        %p.label-for-time To keep proving yourself not to have HIV, you need to check it at the proper facility every 3 months.
+        %p.card-text To keep proving yourself not to have HIV, you need to check it at the proper facility every 3 months.
+        / %a.btn.btn-primary{:href => "#"} Go somewhere
 
-:css
-  img{
-    max-width: 100%;
-  }
-  .countDown{
-    margin-top: 10px;
-  }
-  .label-for-time{
-    text-align: center;
-  }
-  .time{
-    text-align: center;
-    font-size: xx-large;
-  }
-  .not_yet{
-    text-align: center;
-    font-size: x-large;
-  }
-  .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
+
+:coffee
+  set2fig = (num) ->
+    # 桁数が1桁だったら先頭に0を加えて2桁に調整する
+    ret = undefined
+    if num < 10
+      ret = '0' + num
+    else
+      ret = num
+    ret
+
+  showClock = ->
+    nowTime = new Date
+    nowYear = nowTime.getFullYear()
+    nowMonth = ("00" + (nowTime.getMonth()+1)).slice(-2)
+    nowDate = ("00" + nowTime.getDate()).slice(-2)
+    nowHour = set2fig(nowTime.getHours())
+    nowMin = set2fig(nowTime.getMinutes())
+    nowSec = set2fig(nowTime.getSeconds())
+    msg = nowYear + '/' + nowMonth + '/' + nowDate + ' ' + nowHour + ':' + nowMin + ':' + nowSec
+
+    document.getElementById('time-now').innerHTML = msg
+    return
+
+  setInterval showClock, 1000

@@ -1,59 +1,35 @@
-.homeWrap
-  = image_tag 'hiview.png', :class => "gem"
+.home_box
+  .main_icon
+    = image_tag 'hiview.png', :class => "gem"
 
-  -if user_signed_in?
-    %span.gam For Users
-    = link_to 'User Profile', profile_url, class: "gam"
+  .links_wrap
+    -if user_signed_in?
+      .links_box
+        %h3  For Users
+        = link_to 'User Profile', profile_url, class: "btn btn_normal btn-lg active"
+        %br
+        %br
+        = link_to 'Logout User', destroy_user_session_url, method: :delete, class: "btn btn_normal btn-lg active"
 
-    = link_to 'Logout User', destroy_user_session_url, method: :delete, class: "gam"
+    -elsif  hospital_signed_in?
+      .links_box
+        %h3  For Hospitals
+        = link_to 'Go create a new status', new_status_url, class: "btn btn_normal btn-lg active"
+        %br
+        %br
+        = link_to 'Logout Hospital', destroy_hospital_session_url, method: :delete, class: "btn btn_normal btn-lg active"
 
-  -elsif  hospital_signed_in?
-    %span.gam For Hospitals
-    = link_to 'Go create a new status', new_status_url, class: "gam"
+    -else
+      .links_box
+        %h3  For Users
+        = link_to 'Sign Up', new_user_registration_url, class: "btn btn_normal btn-lg active"
+        %br
+        %br
+        = link_to 'Sign In', new_user_session_url, class: "btn btn_normal btn-lg active"
+      .links_box
+        %h3  For Hospitals
+        = link_to 'Sign In', new_hospital_session_url, class: "btn btn_normal btn-lg active"
 
-    = link_to 'Logout Hospital', destroy_hospital_session_url, method: :delete, class: "gam"
-
-  -else
-    %span.gam For Users
-
-    = link_to 'Sign Up', new_user_registration_url, class: "gam"
-
-    = link_to 'Sign In', new_user_session_url, class: "gam"
-
-    %span.gam For Hospitals
-    = link_to 'Sign In', new_hospital_session_url, class: "gam"
-
-  %span.gam For Info
-  = link_to 'what is HIV?', "/info", class: "gam"
-
-:css
-  .homeWrap{
-    margin-top: 20%;
-    display: flex;
-    flex-direction: column;
-  }
-  .gam{
-    text-align: center;
-    margin-top: 10px;
-  }
-
-  img{
-    margin: auto;
-    hight: 350px;
-    width: 350px;
-  }
-
-  h1{
-    color: lightgreen;
-    font-family: fantasy;
-    font-size: 20vw;
-  }
-
-  span{
-    font-size: 7vw;
-    color: #81d75f;
-  }
-
-  a{
-    font-size: 5vw;
-  }
+    .links_box
+      %h3  For Info
+      = link_to 'what is HIV?', "/info", class: "btn btn_normal btn-lg active"
